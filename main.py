@@ -7,7 +7,7 @@ app = FastAPI(title="StatTrack API", description="NBA analytics backend")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "https://stattrack-sandy.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
