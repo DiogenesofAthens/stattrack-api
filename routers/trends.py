@@ -18,7 +18,7 @@ def get_scoring_leaders():
             league_id="00",
             per_mode48="PerGame",
             scope="S",
-            season="2024-25",
+            season="2025-26",
             season_type_all_star="Regular Season",
             stat_category_abbreviation="PTS",
         )
@@ -32,7 +32,7 @@ def get_scoring_leaders():
                     "player_id": int(row["PLAYER_ID"]),
                     "name": row["PLAYER"],
                     "team": row["TEAM"],
-                    "ppg": float(row["PTS"]),
+                    "pts": float(row["PTS"]),
                 }
             )
         return {"players": players}
