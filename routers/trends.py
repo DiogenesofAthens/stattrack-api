@@ -1,6 +1,11 @@
+import logging
+import traceback
+
 from fastapi import APIRouter, HTTPException
 from nba_api.stats.endpoints import PlayerGameLog
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -44,4 +49,5 @@ def get_player_trends(player_id: int):
     except HTTPException:
         raise
     except Exception as e:
+        logger.error("500 error in get_player_trends(player_id=%s):\n%s", player_id, traceback.format_exc())
         raise HTTPException(status_code=500, detail=str(e))
