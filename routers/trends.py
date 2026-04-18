@@ -9,6 +9,22 @@ logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+NBA_HEADERS = {
+    "Host": "stats.nba.com",
+    "Connection": "keep-alive",
+    "Accept": "application/json, text/plain, */*",
+    "x-nba-stats-origin": "stats",
+    "x-nba-stats-token": "true",
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/123.0.0.0 Safari/537.36"
+    ),
+    "Referer": "https://www.nba.com/",
+    "Origin": "https://www.nba.com",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
 
 @router.get("/trends/{player_id}")
 def get_player_trends(player_id: int):
@@ -18,6 +34,8 @@ def get_player_trends(player_id: int):
             player_id=player_id,
             season="2024-25",
             season_type_all_star="Regular Season",
+            headers=NBA_HEADERS,
+            timeout=60,
         )
         df: pd.DataFrame = game_log.get_data_frames()[0]
 
