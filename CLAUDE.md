@@ -11,7 +11,7 @@ FastAPI backend for the StatTrack NBA analytics dashboard.
 
 ## CORS
 
-CORS is open to `http://localhost:3000` (the Next.js frontend).
+CORS is open to `http://localhost:3000` (local dev) and `https://stattrack.kirkwessman.com` (production).
 
 ## Routers
 
